@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "stdio.h": "c",
+        "createrectangle.h": "c",
+        "structs.h": "c"
+    }
+}
