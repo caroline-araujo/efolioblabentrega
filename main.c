@@ -15,50 +15,50 @@ int main() {
 
     while (1) {
         printf("Escolha o comando:\n");
-        printf("1- create\n");
-        printf("2- moveright\n");
-        printf("3- moveleft\n");
+        printf("1 - create\n");
+        printf("2 - moveright\n");
+        printf("3 - moveleft\n");
         printf("Comando: ");
         scanf("%d", &command);
 
         switch (command) {
             case 1:
-                printf ("Digite as coordenadas: \n");
-                printf ("Digite a coordenada x: ");
-                scanf ("%d", &x);
-                printf ("Digite a coordenada y: ");
-                scanf ("%d", &y);
-                printf ("Digite o comprimento l: ");
-                scanf ("%d", &l);
-                printf ("Digite a altura h: ");
-                scanf ("%d", &h);
+                printf("Digite as coordenadas: \n");
+                printf("Digite a coordenada x: ");
+                scanf("%d", &x);
+                printf("Digite a coordenada y: ");
+                scanf("%d", &y);
+                printf("Digite o comprimento l: ");
+                scanf("%d", &l);
+                printf("Digite a altura h: ");
+                scanf("%d", &h);
                 createRectangle(rectangles, &numRectangles, x, y, l, h);
                 break;
 
             case 2:
-                printf ("Digite as coordenadas: \n");
-                printf ("Digite a coordenada x: ");
-                scanf ("%d", &x);
-                printf ("Digite a coordenada y: ");
-                scanf ("%d", &y);
-                printf ("Digite a posicao p: ");
-                scanf ("%d", &p);
+                printf("Digite as coordenadas: \n");
+                printf("Digite a coordenada x: ");
+                scanf("%d", &x);
+                printf("Digite a coordenada y: ");
+                scanf("%d", &y);
+                printf("Digite a posição p: ");
+                scanf("%d", &p);
                 moveRight(rectangles, numRectangles, x, y, p);
                 break;
 
             case 3:
-                printf ("Digite as coordenadas: \n");
-                printf ("Digite a coordenada x: ");
-                scanf ("%d", &x);
-                printf ("Digite a coordenada y: ");
-                scanf ("%d", &y);
-                printf ("Digite a posicao p: ");
-                scanf ("%d", &p);
+                printf("Digite as coordenadas: \n");
+                printf("Digite a coordenada x: ");
+                scanf("%d", &x);
+                printf("Digite a coordenada y: ");
+                scanf("%d", &y);
+                printf("Digite a posição p: ");
+                scanf("%d", &p);
                 moveLeft(rectangles, numRectangles, x, y, p);
                 break;
 
             default:
-                printf("Comando inválido.\n");
+                printf("Comando inválido!\n");
                 break;
         }
 

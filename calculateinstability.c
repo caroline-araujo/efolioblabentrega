@@ -5,38 +5,32 @@
 
 // Função para calcular instabilidade
 float calculateInstability(Rectangle *rectangles, int numRectangles) {
-    int unstableCount = 0;
-    float instabilityDegree = 0.0;
+    float instability = 0.0; // Grau de instabilidade
+    float totalUnsupportedLength = 0.0; // Comprimento total não apoiado
 
     for (int i = 0; i < numRectangles; i++) {
         Rectangle *rect = &rectangles[i];
-
-        // Verificar se o retângulo está apoiado em algum outro retângulo
-        int supported = 0;
+        float unsupportedLength = rect->l; // Comprimento não apoiado inicializado como o comprimento total
 
         for (int j = 0; j < numRectangles; j++) {
-            if (i != j) {
+            if (j != i) {
                 Rectangle *otherRect = &rectangles[j];
-                if (rect->x >= otherRect->x && rect->x + rect->l <= otherRect->x + otherRect->l &&
-                    rect->y - 1 == otherRect->y + otherRect->h) {
-                    supported = 1;
-                    break;
+                if (rect->y == otherRect->y + otherRect->h && rect->x + rect->l > otherRect->x && rect->x < otherRect->x + otherRect->l) {
+                    float intersection = (rect->x + rect->l < otherRect->x + otherRect->l) ? (rect->x + rect->l - otherRect->x) : (otherRect->x + otherRect->l - rect->x);
+                    unsupportedLength -= intersection;
                 }
             }
         }
 
-        // Calcular a proporção das linhas de base
-        float baseLineRatio = supported ? (float)(rect->l) / (float)(rect->h) : 1.0;
-
-        if (supported && baseLineRatio > 1.0) {
-            unstableCount++;
-            instabilityDegree += baseLineRatio - 1.0;
+        if (unsupportedLength > 0) {
+            instability += (unsupportedLength / rect->l);
+            totalUnsupportedLength += unsupportedLength;
         }
     }
 
-    if (unstableCount > 0) {
-        instabilityDegree /= unstableCount;
+    if (totalUnsupportedLength > 0) {
+        instability /= numRectangles;
     }
 
-    return instabilityDegree;
+    return instability;
 }
